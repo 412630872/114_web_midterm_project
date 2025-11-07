@@ -129,6 +129,17 @@ restaurantSelect.id = "restaurant";
 restaurantSelect.required = true;
 
 // 生成選項
+allRestaurants.forEach(name => {
+  const option = document.createElement("option");
+  option.value = name;
+  option.textContent = name;
+  restaurantSelect.appendChild(option);
+});
+
+restaurantDiv.appendChild(restaurantLabel);
+restaurantDiv.appendChild(restaurantSelect);
+form.appendChild(restaurantDiv);
+
 const ratingCategories = ["服務", "衛生", "餐點滿意度"];
 ratingCategories.forEach(cat => {
   const div = document.createElement("div");
