@@ -1,28 +1,28 @@
-document.addEventListener('DOMContentLoaded',()=>{
-// 導航列
-const navbarItems = [
-  { name: "首頁", href: "#home" },
-  { name: "表單", href: "#contact" }
-];
+document.addEventListener('DOMContentLoaded', () => {
+  // 導航列
+  const navbarItems = [
+    { name: "首頁", href: "#home" },
+    { name: "表單", href: "#contact" }
+  ];
 
-const navbarUl = document.getElementById("navbar-items");
-navbarItems.forEach(item => {
-  const li = document.createElement("li");
-  li.className = "nav-item";
-  li.innerHTML = `<a class="nav-link" href="${item.href}">${item.name}</a>`;
-  navbarUl.appendChild(li);
-});
-// 分類按鈕
-const categories = ["臺式","義式","日式","港式","美式"];
-const btnContainer = document.getElementById("category-buttons");
-categories.forEach(cat => {
-  const btn = document.createElement("a");
-  btn.className = "btn btn-secondary btn-lg m-1";
-  btn.href = `#${cat.toLowerCase()}`;
-  btn.textContent = cat;
-  btnContainer.appendChild(btn);
-});
+  const navbarUl = document.getElementById("navbar-items");
+  navbarItems.forEach(item => {
+    const li = document.createElement("li");
+    li.className = "nav-item";
+    li.innerHTML = `<a class="nav-link" href="${item.href}">${item.name}</a>`;
+    navbarUl.appendChild(li);
+  });
 
+  // 分類按鈕
+  const categories = ["臺式", "義式", "日式", "港式", "美式"];
+  const btnContainer = document.getElementById("category-buttons");
+  categories.forEach(cat => {
+    const btn = document.createElement("a");
+    btn.className = "btn btn-secondary btn-lg m-1";
+    btn.href = `#${cat}`;
+    btn.textContent = cat;
+    btnContainer.appendChild(btn);
+  });
 const restaurants = {
   臺式: [
     {name:"力霸椒麻雞",phone:"02-2629-8046",img:"assets/6.jpg",link:"https://www.google.com/maps/place/%E5%8A%9B%E9%9C%B8%E6%A4%92%E9%BA%BB%E9%9B%9E/@25.177447,121.4470769,17z/data=!3m1!4b1!4m6!3m5!1s0x3442afede5025229:0xcbaf7bc7f41925bc!8m2!3d25.1774422!4d121.4496518!16s%2Fg%2F11q96j5l9p?authuser=0&entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D"},
@@ -47,42 +47,46 @@ const restaurants = {
 };
 
 const sectionsContainer = document.getElementById("restaurant-sections");
-for (let category in restaurants) {
-  const section = document.createElement("section");
-  section.id = category;
-  section.className = "py-5" + (category==="taiwanese"||category==="japanese"||category==="american"?" bg-light":"");
+  for (let category in restaurants) {
+    const section = document.createElement("section");
+    section.id = category;
+    // ✅ 改成中文分類判斷
+    section.className =
+      "py-5" + (category === "臺式" || category === "日式" || category === "美式" ? " bg-light" : "");
 
-  const container = document.createElement("div");
-  container.className = "container";
+    const container = document.createElement("div");
+    container.className = "container";
 
-  const title = document.createElement("h2");
-  title.className = "text-center mb-5";
-  title.textContent = category;
-  container.appendChild(title);
+    const title = document.createElement("h2");
+    title.className = "text-center mb-5";
+    title.textContent = category;
+    container.appendChild(title);
 
-  const row = document.createElement("div");
-  row.className = "row";
+    const row = document.createElement("div");
+    row.className = "row";
 
-  restaurants[category].forEach(rest => {
-    const col = document.createElement("div");
-    col.className = "col-md-6 mb-4";
-    col.innerHTML = `
-      <div class="card h-100">
-        <img src="${rest.img}" class="card-img-top" alt="${rest.name}">
-        <div class="card-body">
-          <h5 class="card-title">${rest.name}</h5>
-          <p class="card-text">電話: ${rest.phone}</p>
-          <a href="${rest.link}" class="btn btn-primary">連結</a>
+    restaurants[category].forEach(rest => {
+      const col = document.createElement("div");
+      col.className = "col-md-6 mb-4";
+      col.innerHTML = `
+        <div class="card h-100">
+          <img src="${rest.img}" class="card-img-top" alt="${rest.name}">
+          <div class="card-body">
+            <h5 class="card-title">${rest.name}</h5>
+            <p class="card-text">電話: ${rest.phone}</p>
+            <a href="${rest.link}" target="_blank" class="btn btn-primary">連結</a>
+          </div>
         </div>
-      </div>
-    `;
-    row.appendChild(col);
-  });
+      `;
+      row.appendChild(col);
+    });
 
-  container.appendChild(row);
-  section.appendChild(container);
-  sectionsContainer.appendChild(section);
-}
+    container.appendChild(row);
+    section.appendChild(container);
+    sectionsContainer.appendChild(section);
+  }
+
+  // ✅ 保留表單部分（不需改）
 
 // 收集所有餐廳名稱（陣列）
 let allRestaurants = [];
@@ -207,4 +211,4 @@ form.appendChild(submitBtn);
 
 // 放入 container
 contactContainer.appendChild(form);
-})
+});
