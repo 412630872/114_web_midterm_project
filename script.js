@@ -1,10 +1,10 @@
 const navbarItems = [
   { name: "首頁", href: "#home" },
-  { name: "臺式", href: "#taiwanese" },
-  { name: "義式", href: "#italian" },
-  { name: "日式", href: "#japanese" },
-  { name: "港式", href: "#hongkong" },
-  { name: "美式", href: "#american" },
+  //{ name: "臺式", href: "#taiwanese" },
+  //{ name: "義式", href: "#italian" },
+  //{ name: "日式", href: "#japanese" },
+  //{ name: "港式", href: "#hongkong" },
+  //{ name: "美式", href: "#american" },
   { name: "表單", href: "#contact" }
 ];
 
