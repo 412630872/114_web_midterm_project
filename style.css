@@ -118,3 +118,10 @@ html {
 .rating-star.active {
   color: #ffd700;
 }
+
+/* --- 表單錯誤訊息 --- */
+.invalid-feedback {
+  display: block;
+  color: red;
+  font-size: 0.9rem;
+}
