@@ -1,3 +1,11 @@
+body {
+  padding-top: 70px; /* 預留導航列空間 */
+}
+
+section {
+  scroll-margin-top: 50px; /* 可視 navbar 高度調整 */
+}
+
 /* 平滑滾動 */
 html {
   scroll-behavior: smooth;
