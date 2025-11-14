@@ -147,37 +147,49 @@ ratingCategories.forEach(cat => {
   label.textContent = cat;
   div.appendChild(label);
 
-  const circleContainer = document.createElement("div");
-  circleContainer.className = "rating-circle-container";
+  const starContainer = document.createElement("div");
+  starContainer.className = "rating-star-container";
+
+  let selectedValue = 0;
 
   for (let i = 1; i <= 5; i++) {
-    const circle = document.createElement("span");
-    circle.className = "rating-circle";
-    circle.dataset.value = i;
-    circle.textContent = i;
+    const star = document.createElement("span");
+    star.className = "rating-star";
+    star.dataset.value = i;
+    star.innerHTML = "★";
 
     // 點擊選擇分數
-    circle.addEventListener("click", () => {
-      Array.from(circleContainer.children).forEach(c => c.classList.remove("active"));
-      circle.classList.add("active");
+    star.addEventListener("click", () => {
+      selectedValue = i;
+      updateStars();
     });
 
+
     // 滑鼠移入即時預覽
-    circle.addEventListener("mouseover", () => {
-      Array.from(circleContainer.children).forEach(c => {
-        c.classList.toggle("hovered", c.dataset.value <= i);
-      });
+    star.addEventListener("mouseover", () => {
+      updateStars(i);
     });
 
     // 滑鼠移出取消預覽
-    circle.addEventListener("mouseout", () => {
-      Array.from(circleContainer.children).forEach(c => c.classList.remove("hovered"));
+    star.addEventListener("mouseout", () => {
+      updateStars();
     });
 
-    circleContainer.appendChild(circle);
+    starContainer.appendChild(star);
   }
 
-  div.appendChild(circleContainer);
+  function updateStars(hoverValue = 0) {
+    Array.from(starContainer.children).forEach(s => {
+      const val = Number(s.dataset.value);
+      if (hoverValue) {
+        s.classList.toggle("active", val <= hoverValue);
+      } else {
+        s.classList.toggle("active", val <= selectedValue);
+      }
+    });
+  }
+
+  div.appendChild(starContainer);
   form.appendChild(div);
 });
 
