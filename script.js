@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 // 導航列
 const navbarItems = [
   { name: "首頁", href: "#home" },
+  { name: "臺式", href: "#臺式" },
+  { name: "義式", href: "#義式" },
+  { name: "日式", href: "#日式" },
+  { name: "港式", href: "#港式" },
+  { name: "美式", href: "#美式" },
   { name: "表單", href: "#contact" }
 ];
 
@@ -11,16 +16,6 @@ navbarItems.forEach(item => {
   li.className = "nav-item";
   li.innerHTML = `<a class="nav-link" href="${item.href}">${item.name}</a>`;
   navbarUl.appendChild(li);
-});
-// 分類按鈕
-const categories = ["臺式","義式","日式","港式","美式"];
-const btnContainer = document.getElementById("category-buttons");
-categories.forEach(cat => {
-  const btn = document.createElement("a");
-  btn.className = "btn btn-secondary btn-lg m-1";
-  btn.href = `#${cat.toLowerCase()}`;
-  btn.textContent = cat;
-  btnContainer.appendChild(btn);
 });
 
 const restaurants = {
