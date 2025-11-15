@@ -475,7 +475,7 @@ section.className = "category-section py-5";
   });
 
   const nightBtn = document.createElement('button');
-nightBtn.textContent = '🌙';
+nightBtn.textContent = '深色';
 nightBtn.style.position = 'fixed';
 nightBtn.style.bottom = '20px';
 nightBtn.style.right = '20px';
@@ -492,6 +492,9 @@ document.body.appendChild(nightBtn);
 // 切換深夜模式
 nightBtn.addEventListener('click', () => {
   document.body.classList.toggle('night-mode');
+  if (document.body.classList.contains('night-mode')) {
+    nightBtn.textContent = '淺色';
+  }
 });
 
 }); // end DOMContentLoaded

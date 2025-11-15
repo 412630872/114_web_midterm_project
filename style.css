@@ -3,6 +3,10 @@ body {
   padding-top: 70px;
 }
 
+section {
+  scroll-margin-top: 70px; /* 這個就是導航列下移的間格 */
+}
+
 section .container::after {
   content: "";
   display: block;
