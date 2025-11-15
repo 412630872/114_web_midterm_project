@@ -1,12 +1,22 @@
+/* --- 全局樣式 --- */
 body {
-  padding-top: 70px; /* 預留導航列空間 */
+  padding-top: 70px;
 }
 
-section {
-  scroll-margin-top: 50px; /* 可視 navbar 高度調整 */
+section .container::after {
+  content: "";
+  display: block;
+  width: calc(100% + 40px);
+  max-width: calc(100vw - 40px);
+  height: 1px;
+  background-color: #ccc;
+  margin: 30px auto 0 auto;
 }
 
-/* 平滑滾動 */
+section:last-child {
+  border-bottom: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -22,7 +32,6 @@ html {
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
-/* 浮起效果 */
 .row:hover, .portfolio-row:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0,123,255,0.2);
@@ -30,18 +39,18 @@ html {
   background-color: #fdfdfd;
 }
 
-/* 卡片樣式 */
+/* 卡片 */
 .card {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
-/* 卡片圖片統一大小 */
 .card-img-top {
   width: 100%;
   height: 250px;
@@ -61,6 +70,7 @@ html {
   align-items: center;
   z-index: 9999;
 }
+
 .modal {
   background-color: #fff;
   padding: 30px;
@@ -73,6 +83,7 @@ html {
   text-align: center;
   position: relative;
 }
+
 .modal .close-btn {
   position: absolute;
   top: 10px; right: 15px;
@@ -80,11 +91,38 @@ html {
   cursor: pointer;
   color: #333;
 }
-@keyframes bounce-in {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.1); opacity: 1; }
-  70% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+
+.modal-content {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.modal-line {
+  width: calc(100vw - 40px);
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px auto;
+  display: block;
+}
+
+/* 類別文字框置中 */
+.category-title {
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 5px 15px;
+  background-color: #fff;
+  display: table;
+  margin: 0 auto 15px auto;
+  text-align: center;
+}
+
+/* 文字左對齊 */
+.form-label,
+.form-text,
+.card-text,
+.card-title {
+  text-align: left;
 }
 
 /* 響應式 */
@@ -94,15 +132,18 @@ html {
   .btn-lg { width: 100%; margin-bottom: 10px; }
   .card-img-top { height: 200px; }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
   .col-md-6 { flex: 1 1 50% !important; max-width: 50% !important; }
   .btn-lg { width: 48%; margin-bottom: 10px; }
 }
+
 @media (min-width: 992px) {
   .col-md-6 { flex: 1 1 50% !important; max-width: 50% !important; }
   .btn-lg { width: auto; margin: 5px; }
 }
 
+/* 評分星星 */
 .rating-star-container {
   display: flex;
   gap: 10px;
@@ -119,10 +160,105 @@ html {
   color: #ffd700;
 }
 
-/* --- 表單錯誤訊息 --- */
+/* 表單錯誤訊息保持紅色 */
 .invalid-feedback {
   display: block;
-  color: red;
+  color: red !important;
   font-size: 0.9rem;
 }
 
+/* 動畫 */
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* --- 深夜模式全局 --- */
+body.night-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.night-mode .navbar {
+  background-color: #1f1f1f !important;
+}
+
+body.night-mode .row,
+body.night-mode .portfolio-row,
+body.night-mode .card,
+body.night-mode .category-title {
+  background-color: #1e1e1e;
+  border-color: #444;
+  color: #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+body.night-mode .section-line,
+body.night-mode .modal-line {
+  background-color: #555;
+}
+
+body.night-mode footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+}
+
+body.night-mode .btn-primary,
+body.night-mode .btn {
+  background-color: #bb86fc;
+  border-color: #bb86fc;
+  color: #1e1e1e;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.night-mode .btn:hover {
+  background-color: #d0aaff;
+  color: #1e1e1e;
+}
+
+/* --- 深夜模式表單 --- */
+body.night-mode #contact {
+  background-color: #121212;  /* 整個表單區塊黑色 */
+  color: #e0e0e0;
+  padding: 60px 0;
+}
+
+body.night-mode #contact-container {
+  background-color: #1e1e1e;  /* 表單內容容器深灰 */
+  color: #e0e0e0;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* 表單內部所有區塊背景 */
+body.night-mode #contact-container,
+body.night-mode #contact-container .row,
+body.night-mode #contact-container .col-md-6,
+body.night-mode #contact-container .portfolio-row,
+body.night-mode #contact-container .container {
+  background-color: #1e1e1e;
+  border-color: #444;
+}
+
+/* 輸入框、下拉選單、文字區域 */
+body.night-mode #contact-container input,
+body.night-mode #contact-container textarea,
+body.night-mode #contact-container select {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+/* 標籤文字與說明文字 */
+body.night-mode #contact-container .form-label,
+body.night-mode #contact-container .form-text {
+  color: #e0e0e0;
+}
+
+/* 表單錯誤訊息保持紅色 */
+body.night-mode #contact-container .invalid-feedback {
+  color: red !important;
+}

@@ -31,15 +31,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   // 把每個 category 產生一個 section，內含多張卡片
   const sectionsContainer = document.getElementById("restaurant-sections");
   for (let category in restaurants) {
-    const section = document.createElement("section");
-    section.id = category;
-    section.className = "py-5";
-
+const section = document.createElement("section");
+section.id = category;
+section.className = "category-section py-5";
     const container = document.createElement("div");
     container.className = "container";
 
     const title = document.createElement("h2");
-    title.className = "text-center mb-5";
+    title.className = "category-title text-center mb-5";
     title.textContent = category;
     container.appendChild(title);
 
@@ -474,5 +473,25 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     }, 1000);
   });
+
+  const nightBtn = document.createElement('button');
+nightBtn.textContent = '🌙';
+nightBtn.style.position = 'fixed';
+nightBtn.style.bottom = '20px';
+nightBtn.style.right = '20px';
+nightBtn.style.zIndex = '9999';
+nightBtn.style.padding = '10px 15px';
+nightBtn.style.borderRadius = '50%';
+nightBtn.style.border = 'none';
+nightBtn.style.backgroundColor = '#007bff';
+nightBtn.style.color = '#fff';
+nightBtn.style.cursor = 'pointer';
+nightBtn.style.fontSize = '1.2rem';
+document.body.appendChild(nightBtn);
+
+// 切換深夜模式
+nightBtn.addEventListener('click', () => {
+  document.body.classList.toggle('night-mode');
+});
 
 }); // end DOMContentLoaded
