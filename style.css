@@ -1,10 +1,10 @@
-/* --- 全局樣式 --- */
+/* 全局樣式 */
 body {
   padding-top: 70px;
 }
 
 section {
-  scroll-margin-top: 70px; /* 這個就是導航列下移的間格 */
+  scroll-margin-top: 70px;
 }
 
 section .container::after {
@@ -109,7 +109,7 @@ html {
   display: block;
 }
 
-/* 類別文字框置中 */
+/* 文字調整 */
 .category-title {
   font-weight: bold;
   border: 2px solid #000;
@@ -121,7 +121,6 @@ html {
   text-align: center;
 }
 
-/* 文字左對齊 */
 .form-label,
 .form-text,
 .card-text,
@@ -164,14 +163,13 @@ html {
   color: #ffd700;
 }
 
-/* 表單錯誤訊息保持紅色 */
 .invalid-feedback {
   display: block;
   color: red !important;
   font-size: 0.9rem;
 }
 
-/* 動畫 */
+/* 星星動畫 */
 @keyframes bounce-in {
   0% { transform: scale(0); opacity: 0; }
   50% { transform: scale(1.1); opacity: 1; }
@@ -179,7 +177,7 @@ html {
   100% { transform: scale(1); }
 }
 
-/* --- 深夜模式全局 --- */
+/* 深夜模式全局 */
 body.night-mode {
   background-color: #121212;
   color: #e0e0e0;
@@ -222,22 +220,21 @@ body.night-mode .btn:hover {
   color: #1e1e1e;
 }
 
-/* --- 深夜模式表單 --- */
+/* 深夜模式表單 */
 body.night-mode #contact {
-  background-color: #121212;  /* 整個表單區塊黑色 */
+  background-color: #121212;
   color: #e0e0e0;
   padding: 60px 0;
 }
 
 body.night-mode #contact-container {
-  background-color: #1e1e1e;  /* 表單內容容器深灰 */
+  background-color: #1e1e1e;
   color: #e0e0e0;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-/* 表單內部所有區塊背景 */
 body.night-mode #contact-container,
 body.night-mode #contact-container .row,
 body.night-mode #contact-container .col-md-6,
@@ -247,7 +244,6 @@ body.night-mode #contact-container .container {
   border-color: #444;
 }
 
-/* 輸入框、下拉選單、文字區域 */
 body.night-mode #contact-container input,
 body.night-mode #contact-container textarea,
 body.night-mode #contact-container select {
@@ -256,13 +252,11 @@ body.night-mode #contact-container select {
   border-color: #444;
 }
 
-/* 標籤文字與說明文字 */
 body.night-mode #contact-container .form-label,
 body.night-mode #contact-container .form-text {
   color: #e0e0e0;
 }
 
-/* 表單錯誤訊息保持紅色 */
 body.night-mode #contact-container .invalid-feedback {
   color: red !important;
 }
